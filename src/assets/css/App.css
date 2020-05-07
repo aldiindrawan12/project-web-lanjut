@@ -64,6 +64,9 @@ a{
     height: 4vh;
     background-color: #FFD700;
     padding: 1%;
+    width: 100%;
+    top: 0px;
+    position: fixed;
 }
 
 .header-container{
@@ -90,7 +93,7 @@ a{
     width: fit-content;
     float: right;
     font-size: 1.5vw;
-   
+    margin-right: 1%;
 }
 
 .header-nav li{

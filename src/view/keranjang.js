@@ -1,4 +1,5 @@
 import React from 'react'
+import '../assets/css/keranjang.css'
 
 function Keranjang(){
     return(

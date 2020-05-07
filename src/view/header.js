@@ -1,8 +1,9 @@
 import React from 'react';
 import '../assets/css//App.css';
-import { Route,Link, BrowserRouter as Router} from 'react-router-dom';
-import Home from './home';
+import { Route, BrowserRouter as Router} from 'react-router-dom';
 import Footer from './footer';
+import Home from './home';
+import Product from './product'
 import Keranjang from './keranjang';
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
     <div>
     <Router>
         <Route exact path="/" component={Home} />
+        <Route exact path='/product' component={Product}/>
+        <Route path='/product/:nama' component={Product}/>
         <Route exact path="/keranjang" component={Keranjang} />
     </Router>
     </div>

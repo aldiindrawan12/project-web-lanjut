@@ -1,45 +1,34 @@
-import React from 'react';
-import '../assets/css/home.css';
-import logo from '../assets/gambar/logo.svg'
+import React from 'react'
+import '../assets/css/home.css'
+import anak from '../assets/gambar/anak.jpg'
+import pria from '../assets/gambar/pria.jpg'
+import wanita from '../assets/gambar/wanita.jpg'
 
-function Home() {
-  return (
-    <div className="container">
-        <div className="search">
-            <input type="text" name="cari" id="cari" placeholder="cari barang"></input>
+function Home(){
+    return(
+    <>
+    <div className="container-home">
+        <div className="tipe">
+            <a href='/product/pria'>
+                <img src={pria} alt="Pria"></img>
+                <h1>Pria</h1>
+            </a>
         </div>
-        <div className="container-product">
-            <div className="item">
-                <img className="image" src={logo}/>
-                <h3>nama barang</h3>
-            </div>
-            <div className="item">
-                <img className="image" src={logo}/>
-                <h3>nama barang</h3>
-            </div>
-            <div className="item">
-                <img className="image" src={logo}/>
-                <h3>nama barang</h3>
-            </div>
-            <div className="item">
-                <img className="image" src={logo}/>
-                <h3>nama barang</h3>
-            </div>
-            <div className="item">
-                <img className="image" src={logo}/>
-                <h3>nama barang</h3>
-            </div>
-            <div className="item">
-                <img className="image" src={logo}/>
-                <h3>nama barang</h3>
-            </div>
-            <div className="item">
-                <img className="image" src={logo}/>
-                <h3>nama barang</h3>
-            </div>
+        <div className="tipe">
+            <a href='/product/Wanita'>
+                <img src={wanita} alt="Wanita"></img>
+                <h1>Wanita</h1>
+            </a>
+        </div>
+        <div className="tipe">
+            <a href='/product/Anak-Anak'>
+                <img src={anak} alt="Anak-Anak"></img>
+                <h1>Anak-Anak</h1>
+            </a>
         </div>
     </div>
-  );
+    </>
+    );
 }
 
 export default Home;

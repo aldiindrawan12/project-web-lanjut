@@ -4,7 +4,7 @@ import '../assets/css/footer.css'
 function Footer(){
     return(
         <div className="Footer">
-        <h1>ini footer</h1>
+            ini footer @aldi indrawan
         </div>
     );
 }
