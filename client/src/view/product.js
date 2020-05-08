@@ -3,6 +3,19 @@ import '../assets/css/product.css';
 import logo from '../assets/gambar/logo.svg'
 
 class Product extends React.Component{
+    constructor(){
+        super();
+        this.state ={
+            barang : []
+        }
+    }
+
+    componentDidMount(){
+        fetch("/api/barang")
+        .then(res => res.json())
+        .then(barang => this.setState({barang},() => console.log("data barang diambil",barang)));
+    }
+
     render(){
         const {params} = this.props.match;
         return (
@@ -14,34 +27,12 @@ class Product extends React.Component{
                     <input type="text" name="cari" id="cari" placeholder="cari barang"></input>
                 </div>
                 <div className="container-product">
-                    <div className="item">
-                        <img className="image" src={logo}/>
-                        <h3>nama barang</h3>
-                    </div>
-                    <div className="item">
-                        <img className="image" src={logo}/>
-                        <h3>nama barang</h3>
-                    </div>
-                    <div className="item">
-                        <img className="image" src={logo}/>
-                        <h3>nama barang</h3>
-                    </div>
-                    <div className="item">
-                        <img className="image" src={logo}/>
-                        <h3>nama barang</h3>
-                    </div>
-                    <div className="item">
-                        <img className="image" src={logo}/>
-                        <h3>nama barang</h3>
-                    </div>
-                    <div className="item">
-                        <img className="image" src={logo}/>
-                        <h3>nama barang</h3>
-                    </div>
-                    <div className="item">
-                        <img className="image" src={logo}/>
-                        <h3>nama barang</h3>
-                    </div>
+                       {this.state.barang.map(barang => 
+                            <div key = {barang.id} className="item">
+                                <img className="image" src={logo} alt="gambar barang"/>
+                                <h3>{barang.name}</h3>
+                            </div>
+                        )}       
                 </div>
             </div>
         );

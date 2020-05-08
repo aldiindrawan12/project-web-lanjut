@@ -9,12 +9,12 @@ import Keranjang from './keranjang';
 function App() {
   return (
       <>
-    <div class="header white-black" id="home">
-        <div class="header-container">
-            <div class="header-logo">
+    <div className="header white-black" id="home">
+        <div className="header-container">
+            <div className="header-logo">
                 <a href="<?php echo base_url() ?>">CLOTHING STORE</a>
             </div>
-            <div class="header-nav">
+            <div className="header-nav">
                 <ul>
                     <li><a href="/">HOME</a></li>
                     <li><a href="/keranjang">KERANJANG</a></li>
