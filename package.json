@@ -4,8 +4,11 @@
   "description": "project tugas besar pemrograman web lanjut",
   "main": "index.js",
   "scripts": {
+    "client-install": "cd client && npm install",
     "start": "node index.js",
-    "server":"nodemon index.js"
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",

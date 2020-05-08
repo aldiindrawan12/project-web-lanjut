@@ -15,8 +15,8 @@ async function run() {
         MongoClient.connect(url, { useUnifiedTopology: true })
         .then(client => {
             console.log('Connected to Database')
-            const db = client.db('test')
-            const quotesCollection = db.collection('stok')
+            const db = client.db('clothing-store')
+            const quotesCollection = db.collection('barang')
             const doc = db.collection("stok").find().toArray();
             app.post('/quotes', (req, res) => {
                 quotesCollection.insertOne(req.body)
@@ -27,8 +27,8 @@ async function run() {
             })
 
             //akses link root akan menampilkan json data dari database
-            app.get("/api/barang",(req,res)=>{
-                db.collection('stok').find().toArray()
+            app.get("/api/barang/",(req,res)=>{
+                db.collection('barang').find().toArray()
                     .then(results => {
                     res.json(results)
                     console.log(results)
@@ -37,8 +37,8 @@ async function run() {
             })
             
             //ambil data dengan berdasarkan name
-            app.get("api/barang/:kategori",(req,res)=>{
-                db.collection("stok").find({"name":req.params.kategori}).toArray()
+            app.get("/api/barang/:kategori",(req,res)=>{
+                db.collection("barang").find({"kategori":req.params.kategori}).toArray()
                 .then(results => {
                     res.json(results)
                 })

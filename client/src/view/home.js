@@ -10,13 +10,13 @@ class Home extends Component{
         <>
         <div className="container-home">
             <div className="tipe">
-                <a href='/product/pria'>
+                <a href='/product/Pria'>
                     <img src={pria} alt="Pria"></img>
                     <h1>Pria</h1>
                 </a>
             </div>
             <div className="tipe">
-                <a href='/product/Wanita'>
+                <a href='/product/wanita'>
                     <img src={wanita} alt="Wanita"></img>
                     <h1>Wanita</h1>
                 </a>

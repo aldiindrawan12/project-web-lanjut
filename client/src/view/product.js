@@ -11,9 +11,10 @@ class Product extends React.Component{
     }
 
     componentDidMount(){
-        fetch("/api/barang")
+        const {params} = this.props.match;
+        fetch('/api/barang/'+params.nama)
         .then(res => res.json())
-        .then(barang => this.setState({barang},() => console.log("data barang diambil",barang)));
+        .then(barang => this.setState({barang},() => console.log(params.nama,barang)));
     }
 
     render(){
@@ -28,9 +29,9 @@ class Product extends React.Component{
                 </div>
                 <div className="container-product">
                        {this.state.barang.map(barang => 
-                            <div key = {barang.id} className="item">
+                            <div key = {barang._id} className="item">
                                 <img className="image" src={logo} alt="gambar barang"/>
-                                <h3>{barang.name}</h3>
+                                <h3>{barang.nama}</h3>
                             </div>
                         )}       
                 </div>
