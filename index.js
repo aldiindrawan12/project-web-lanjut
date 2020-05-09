@@ -3,11 +3,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const { MongoClient } = require("mongodb");
+const formidable = require("formidable");
+const mv = require("mv");
 
 const url = "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
 
 //set penggunaan body parser
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
 async function run() {
@@ -43,6 +46,38 @@ async function run() {
                     res.json(results)
                 })
                 .catch(error => console.error(error))
+            })
+
+            //tambah data barang
+            app.post('/tambah',function(req,res){
+                //ambil data gambar
+                var form  = new formidable.IncomingForm();
+                form.parse(req,function(err,fields,files){
+                    var oldpath = files.gambar.path;
+                    var newpath = __dirname + "/client/src/assets/gambar/" + files.gambar.name;
+                    var data = {
+                        "nama":fields.nama,
+                        "kategori":fields.kategori,
+                        "harga":fields.harga,
+                        "deskripsi":fields.deskripsi,
+                        "ukuran":fields.ukuran,
+                        "rating":5,
+                        "stok":fields.stok,
+                        "gambar":files.gambar.name
+                    }
+                    db.collection("barang").insertOne(data)
+                    .then(result => {
+                    })
+                    .catch(error => console.error(error))
+
+                    console.log(data)
+                    
+                    mv(oldpath, newpath, function (err) {
+                        if (err) { throw err; }
+                        console.log('file uploaded successfully');
+                        return res.redirect("/")
+                      });
+                })
             })
 
         })

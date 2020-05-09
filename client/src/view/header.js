@@ -5,6 +5,7 @@ import Footer from './footer';
 import Home from './home';
 import Product from './product'
 import Keranjang from './keranjang';
+import Upload from '../view/upload/upload'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <div className="header-nav">
                 <ul>
                     <li><a href="/">HOME</a></li>
+                    <li><a href="/upload">tambah</a></li>
                     <li><a href="/keranjang">KERANJANG</a></li>
                     <li><a href="/">ABOUT</a></li>
                     <li><a href="/">LOGOUT</a></li>
@@ -30,6 +32,7 @@ function App() {
         <Route exact path='/product' component={Product}/>
         <Route path='/product/:nama' component={Product}/>
         <Route exact path="/keranjang" component={Keranjang} />
+        <Route exact path="/upload" component={Upload} />
     </Router>
     </div>
     <Footer />

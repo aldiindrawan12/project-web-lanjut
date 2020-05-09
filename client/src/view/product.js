@@ -30,7 +30,7 @@ class Product extends React.Component{
                 <div className="container-product">
                        {this.state.barang.map(barang => 
                             <div key = {barang._id} className="item">
-                                <img className="image" src={logo} alt="gambar barang"/>
+                                <img className="image" src={require('../assets/gambar/'+barang.gambar)} alt="gambar barang"/>
                                 <h3>{barang.nama}</h3>
                             </div>
                         )}       

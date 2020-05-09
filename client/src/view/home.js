@@ -10,7 +10,7 @@ class Home extends Component{
         <>
         <div className="container-home">
             <div className="tipe">
-                <a href='/product/Pria'>
+                <a href='/product/pria'>
                     <img src={pria} alt="Pria"></img>
                     <h1>Pria</h1>
                 </a>
@@ -22,7 +22,7 @@ class Home extends Component{
                 </a>
             </div>
             <div className="tipe">
-                <a href='/product/Anak-Anak'>
+                <a href='/product/anak-anak'>
                     <img src={anak} alt="Anak-Anak"></img>
                     <h1>Anak-Anak</h1>
                 </a>

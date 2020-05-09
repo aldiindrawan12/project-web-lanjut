@@ -1,11 +1,13 @@
 .container{
+    padding: 1%;
     margin-top: 4%;
+    margin-bottom: 2%;
     text-align: center;
     background-color: dimgrey;
 }
 
 .container-product{
-    width: 90%;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -32,6 +34,7 @@
 
 .item{
     width: 30%;
+    height: 50vh;
     margin-left: 1%;
     border: 1px solid;
 
@@ -41,4 +44,9 @@
     text-align: center;
     font-size: 1vw;
     margin: 5%;
+}
+
+.item image{
+    width: 50%;
+    height: 80%;
 }
