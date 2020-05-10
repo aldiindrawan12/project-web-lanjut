@@ -80,6 +80,10 @@ async function run() {
                 })
             })
 
+            app.post('/rating',function(req,res){
+                console.log()
+            })
+
         })
     } catch (err) {
         console.log("eror");

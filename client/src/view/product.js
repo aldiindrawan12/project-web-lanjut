@@ -1,7 +1,6 @@
 import React from 'react';
 import '../assets/css/product.css';
-import logo from '../assets/gambar/logo.svg'
-
+import Star from 'beauty-stars';
 class Product extends React.Component{
     constructor(){
         super();
@@ -31,7 +30,17 @@ class Product extends React.Component{
                        {this.state.barang.map(barang => 
                             <div key = {barang._id} className="item">
                                 <img className="image" src={require('../assets/gambar/'+barang.gambar)} alt="gambar barang"/>
-                                <h3>{barang.nama}</h3>
+                                <h4 className="nama">{barang.nama}</h4>
+                                <h5 className="harga">Rp.{barang.harga}</h5>        
+                                <div className="rating">
+                                    <Star 
+                                        size="100%"
+                                        value={this.state.value}
+                                        onChange={value => this.setState({ value },console.log(value))}
+                                    />
+                                </div>
+                                <a className="detail" href="/">Detail</a>
+                                <a className="beli" href="/">Beli</a>
                             </div>
                         )}       
                 </div>
