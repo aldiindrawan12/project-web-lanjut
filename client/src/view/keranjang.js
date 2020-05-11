@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
 import '../assets/css/keranjang.css'
 
-function Keranjang(){
-    return(
-        <h1>ini keranjang</h1>
-    );
+class Keranjang extends Component{
+    
+
+    render(){
+        return(
+            <h1>ini keranjang</h1>
+        );
+    }
 }
 
 export default Keranjang;

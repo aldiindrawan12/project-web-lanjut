@@ -5,7 +5,6 @@ const app = express();
 const { MongoClient } = require("mongodb");
 const formidable = require("formidable");
 const mv = require("mv");
-
 const url = "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
 
@@ -19,27 +18,8 @@ async function run() {
         .then(client => {
             console.log('Connected to Database')
             const db = client.db('clothing-store')
-            const quotesCollection = db.collection('barang')
-            const doc = db.collection("stok").find().toArray();
-            app.post('/quotes', (req, res) => {
-                quotesCollection.insertOne(req.body)
-                .then(result => {
-                    res.redirect("/")
-                })
-                .catch(error => console.error(error))
-            })
 
-            //akses link root akan menampilkan json data dari database
-            app.get("/api/barang/",(req,res)=>{
-                db.collection('barang').find().toArray()
-                    .then(results => {
-                    res.json(results)
-                    console.log(results)
-                    })
-                    .catch(error => console.error(error))
-            })
-            
-            //ambil data dengan berdasarkan name
+            //ambil data dengan berdasarkan kategori
             app.get("/api/barang/:kategori",(req,res)=>{
                 db.collection("barang").find({"kategori":req.params.kategori}).toArray()
                 .then(results => {
@@ -80,9 +60,49 @@ async function run() {
                 })
             })
 
+            //mengolah rating product
             app.post('/rating',function(req,res){
                 console.log()
             })
+
+            //buat akun user
+            app.post("/adduser",function(req,res){
+                db.collection("user").find().toArray().
+                then(results =>{
+                    var n = 0
+                    for(var i=0;i<results.length;i++){
+                        if(results[i]["username"] == req.body.username){
+                            n = n+1;
+                        }    
+                    }
+                    if(n>0){
+                        res.send('<script>alert("Username sudah ada");window.location.href ="/adduser"</script>')
+                    }else{
+                        db.collection("user").insertOne(req.body)
+                        .then (results => {
+                            res.redirect("/")
+                        })
+                    }
+                })  
+            });
+
+            //verifikasi login
+            app.post("/login",function(req,res){
+                db.collection("user").find({"username":req.body.username}).toArray()
+                .then(results =>{
+                    if(results.length === 0){
+                        res.send('<script>alert("Username salah");window.location.href ="/login"</script>')
+                    }else{
+                        if(results[0]["password"] === req.body.password){
+                            res.redirect("/")
+                        }else{
+                            res.send('<script>alert("Password salah");window.location.href ="/login"</script>')
+                        }
+                    }
+                })
+            });
+
+
 
         })
     } catch (err) {
