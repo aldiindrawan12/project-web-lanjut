@@ -28,6 +28,15 @@ async function run() {
                 .catch(error => console.error(error))
             })
 
+            //ambil data keranjang user
+            app.get("/api/keranjang/:user",(req,res)=>{
+                    db.collection("keranjang").find({"user":req.params.user}).toArray()
+                    .then(results => {
+                            res.json(results)
+                    })
+                    .catch(error => console.error(error))
+            })
+
             //ambil data detail
             app.get("/api/barang/:kategori/:nama",(req,res)=>{
                 db.collection("barang").find({"kategori":req.params.kategori,"nama":req.params.nama}).toArray()
@@ -37,6 +46,38 @@ async function run() {
                 .catch(error => console.error(error))
             })
 
+            //tambah data keranjang
+            app.post('/addkeranjang',function(req,res){
+                if(req.body.username === ""){
+                    res.redirect('/login')
+                }else{
+                    var data = {
+                        "user":req.body.username,
+                        "nama":req.body.nama,
+                        "jumlah":1
+                    }
+                    db.collection("keranjang").find().toArray().
+                    then(results =>{
+                    //cek apakah barang sudah ada di keranjang
+                    n = 0
+                    for(var i=0;i<results.length;i++){
+                        if(results[i]["user"] == req.body.username && results[i]["nama"]==req.body.nama){
+                            n = results[i]["jumlah"]+1        
+                        }    
+                    }
+                    if(n>0){
+                        db.collection("keranjang").update({"user":req.body.username,"nama":req.body.nama},{$set:{"jumlah":n}})
+                        res.redirect("/keranjang")
+                    }else{    
+                        db.collection("keranjang").insertOne(data)
+                        .then(result => {
+                            res.redirect('/keranjang')
+                        }) 
+                        .catch(error => console.error(error))
+                    }
+                    })
+                }
+            });
             //tambah data barang
             app.post('/tambah',function(req,res){
                 //ambil data gambar

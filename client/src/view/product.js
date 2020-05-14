@@ -1,6 +1,5 @@
 import React from 'react';
 import '../assets/css/product.css';
-import Star from 'beauty-stars';
 class Product extends React.Component{
     constructor(){
         super();
@@ -33,7 +32,12 @@ class Product extends React.Component{
                                 <h4 className="nama">{barang.nama}</h4>
                                 <h5 className="harga">Rp.{barang.harga}</h5>        
                                 <a className="detail" href={'/detail/'+barang.kategori+"/"+barang.nama}>Detail</a>
-                                <a className="beli" href="/">Beli</a>
+                                <form action="/addkeranjang" method="POST">
+                                    <input name="username" value={localStorage.getItem("username")} hidden></input>
+                                    <input name="nama" value={barang.nama} hidden></input>
+                                    <button className="beli">Beli</button>
+                                </form>
+                                
                             </div>
                         )}       
                 </div>

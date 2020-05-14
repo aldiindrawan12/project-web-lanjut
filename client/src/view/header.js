@@ -25,6 +25,18 @@ class App extends Component{
         return null;
     };
 
+    TambahComponent(){
+        if (localStorage.getItem("username") != null)
+            if(localStorage.getItem("username") === "aldi12")
+                return <li><a href="/upload">TAMBAH</a></li>
+        return null;
+    };
+
+    Keranjangcomponent(){
+        if (localStorage.getItem("username") != null)
+            return <li><a href="/keranjang" >KERANJANG</a></li>
+        return null;
+    }
     render(){
         return (
             <>
@@ -36,8 +48,8 @@ class App extends Component{
                     <div className="header-nav">
                         <ul>
                             <li><a href="/">HOME</a></li>
-                            <li><a href="/upload">TAMBAH</a></li>
-                            <li><a href="/keranjang">KERANJANG</a></li>
+                            {this.Keranjangcomponent()}
+                            {this.TambahComponent()}
                             {this.LoginComponent()}
                             {this.LogoutComponent()}
                         </ul>
