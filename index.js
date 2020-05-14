@@ -5,7 +5,7 @@ const app = express();
 const { MongoClient } = require("mongodb");
 const formidable = require("formidable");
 const mv = require("mv");
-const url = "mongodb://127.0.0.1:27017";
+const url = "mongodb+srv://aldi12:Sayang12-11-98@cluster0-iupzw.mongodb.net/test?retryWrites=true&w=majority";//"mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
 
 //set penggunaan body parser
@@ -17,11 +17,20 @@ async function run() {
         MongoClient.connect(url, { useUnifiedTopology: true })
         .then(client => {
             console.log('Connected to Database')
-            const db = client.db('clothing-store')
+            const db = client.db('clothing-store') 
 
             //ambil data dengan berdasarkan kategori
             app.get("/api/barang/:kategori",(req,res)=>{
                 db.collection("barang").find({"kategori":req.params.kategori}).toArray()
+                .then(results => {
+                    res.json(results)
+                })
+                .catch(error => console.error(error))
+            })
+
+            //ambil data detail
+            app.get("/api/barang/:kategori/:nama",(req,res)=>{
+                db.collection("barang").find({"kategori":req.params.kategori,"nama":req.params.nama}).toArray()
                 .then(results => {
                     res.json(results)
                 })

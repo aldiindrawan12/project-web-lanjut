@@ -32,14 +32,7 @@ class Product extends React.Component{
                                 <img className="image" src={require('../assets/gambar/'+barang.gambar)} alt="gambar barang"/>
                                 <h4 className="nama">{barang.nama}</h4>
                                 <h5 className="harga">Rp.{barang.harga}</h5>        
-                                <div className="rating">
-                                    <Star 
-                                        size="100%"
-                                        value={this.state.value}
-                                        onChange={value => this.setState({ value },console.log(value))}
-                                    />
-                                </div>
-                                <a className="detail" href="/">Detail</a>
+                                <a className="detail" href={'/detail/'+barang.kategori+"/"+barang.nama}>Detail</a>
                                 <a className="beli" href="/">Beli</a>
                             </div>
                         )}       

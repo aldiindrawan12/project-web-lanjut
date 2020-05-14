@@ -35,9 +35,10 @@
 
 .item{
     width: 20%;
-    padding: 1%;
+    padding: 2%;
     margin-left: 1%;
     border: 1px solid;
+    text-align: center;
 
 }
 
@@ -45,7 +46,14 @@
     color: crimson;
     text-align: center;
     margin: 5%;
-    font-size: 3vh;
+}
+
+.item .harga{
+    font-size: 1vw;
+}
+
+.item .nama{
+    font-size: 1.5vw;
 }
 
 .item .image{
@@ -64,10 +72,14 @@
 
 .detail{
     background-color: green;
+    padding: 2%;
+    font-size: 1.5vw;
 }
 
 .beli{
     background-color: crimson;
+    padding: 2%;
+    font-size: 1.5vw;
 }
 
 .rating{

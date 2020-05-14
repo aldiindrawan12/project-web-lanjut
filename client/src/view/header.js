@@ -8,6 +8,7 @@ import Keranjang from './keranjang';
 import Upload from '../view/upload/upload';
 import Login from '../view/login/login';
 import Adduser from '../view/login/adduser';
+import Detail from '../view/detail'
 
 class App extends Component{
 
@@ -30,12 +31,12 @@ class App extends Component{
             <div className="header white-black" id="home">
                 <div className="header-container">
                     <div className="header-logo">
-                        <a href="<?php echo base_url() ?>">CLOTHING STORE</a>
+                        <a href="/">CLOTHING STORE</a>
                     </div>
                     <div className="header-nav">
                         <ul>
                             <li><a href="/">HOME</a></li>
-                            <li><a href="/upload">tambah</a></li>
+                            <li><a href="/upload">TAMBAH</a></li>
                             <li><a href="/keranjang">KERANJANG</a></li>
                             {this.LoginComponent()}
                             {this.LogoutComponent()}
@@ -52,6 +53,7 @@ class App extends Component{
                 <Route exact path="/upload" component={Upload} />
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/adduser" component={Adduser}/>
+                <Route exact path="/detail/:kategori/:nama" component={Detail}/>
             </Router>
             </div>
             <Footer />

@@ -1,0 +1,60 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container-detail{
+    padding: 1%;
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.item-detail{
+    padding: 1%;
+    background-color: darkgrey;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.item-detail h4{
+    margin-top: 5%;
+    font-size: 2vw;
+}
+
+.item-detail h5{
+    margin-top: 2%;
+    font-size: 1.5vw;
+}
+
+.item-detail img{
+    margin-top: 1%;
+    width: 50%;
+}
+
+.item-detail .deskripsi{
+    margin-top: 5%;
+    padding: 1%;
+    font-size: 1vw;
+}
+
+.item-detail h3{
+    font-size: 1.5;
+    float: left;
+    margin-left: 10%;
+}
+
+.item-detail text{
+    float: left;
+    margin-top: 1%;
+    margin-left: 10%;
+}
+
+.item-detail .beli{
+    float: right;
+    padding: 1%;
+    font-size: 1.5vw;
+    margin-right: 10%;
+    margin-top: 5%;
+}
