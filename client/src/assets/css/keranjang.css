@@ -1,3 +1,19 @@
 .container-keranjang{
+    padding: 2%;
     margin-top: 4%;
+    width: 100%;
+}
+
+.item-keranjang{
+    padding: 1%;
+    margin: auto;
+    font-size: 1vw;
+}
+
+.container-keranjang table{
+    padding:1%;
+}
+
+table tr{
+    text-align: center;
 }

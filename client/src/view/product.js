@@ -30,11 +30,15 @@ class Product extends React.Component{
                             <div key = {barang._id} className="item">
                                 <img className="image" src={require('../assets/gambar/'+barang.gambar)} alt="gambar barang"/>
                                 <h4 className="nama">{barang.nama}</h4>
-                                <h5 className="harga">Rp.{barang.harga}</h5>        
+                                <h5 className="harga">Rp.{barang.harga}</h5>  
+                                <h5 className="rating">rating   : {barang.rating}</h5>      
                                 <a className="detail" href={'/detail/'+barang.kategori+"/"+barang.nama}>Detail</a>
                                 <form action="/addkeranjang" method="POST">
                                     <input name="username" value={localStorage.getItem("username")} hidden></input>
                                     <input name="nama" value={barang.nama} hidden></input>
+                                    <input name="gambar" value={barang.gambar} hidden></input>
+                                    <input name="harga" value={barang.harga} hidden></input>
+                                    <input name="total" value={barang.harga} hidden></input>
                                     <button className="beli">Beli</button>
                                 </form>
                                 

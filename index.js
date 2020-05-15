@@ -54,7 +54,10 @@ async function run() {
                     var data = {
                         "user":req.body.username,
                         "nama":req.body.nama,
-                        "jumlah":1
+                        "jumlah":1,
+                        "harga":req.body.harga,
+                        "total":req.body.total,
+                        "gambar":req.body.gambar
                     }
                     db.collection("keranjang").find().toArray().
                     then(results =>{
@@ -62,11 +65,12 @@ async function run() {
                     n = 0
                     for(var i=0;i<results.length;i++){
                         if(results[i]["user"] == req.body.username && results[i]["nama"]==req.body.nama){
-                            n = results[i]["jumlah"]+1        
+                            n = results[i]["jumlah"]+1
+                            db.collection("keranjang").update({"user":req.body.username,"nama":req.body.nama},{$set:{"total":results[i]["harga"]*n}})        
                         }    
                     }
                     if(n>0){
-                        db.collection("keranjang").update({"user":req.body.username,"nama":req.body.nama},{$set:{"jumlah":n}})
+                        db.collection("keranjang").update({"user":req.body.username,"nama":req.body.nama},{$set:{"jumlah":parseInt(n)}})
                         res.redirect("/keranjang")
                     }else{    
                         db.collection("keranjang").insertOne(data)
@@ -78,6 +82,41 @@ async function run() {
                     })
                 }
             });
+
+            //hapus keranjang
+            app.post('/hapus/:user/:nama',(req,res)=>{
+                db.collection("keranjang").remove({"user":req.params.user,"nama":req.params.nama})
+                .then(results=>{
+                    res.redirect("/keranjang")
+                })
+                .catch(error=>console.error(error))
+            })
+            
+            //update keranjang
+            app.post("/update/:user/:nama",(req,res)=>{
+                db.collection("keranjang").find({"user":req.params.user,"nama":req.params.nama}).toArray().
+                    then(results =>{
+                        db.collection("keranjang")
+                        .update({"user":req.params.user,"nama":req.params.nama}
+                        ,{$set:{"jumlah":req.body.jumlah,"total":req.body.jumlah*req.body.harga}})
+                        .then(results => {res.redirect("/keranjang")})        
+                    })
+            })
+
+            //update rating
+            app.post("/updaterating/:nama",(req,res)=>{
+                db.collection("barang").find({"nama":req.params.nama}).toArray().
+                    then(results =>{
+                        db.collection("barang")
+                        .update({"nama":req.params.nama}
+                        ,{$set:{"userrating":results[0]["userrating"]+1,
+                        "rating":(results[0]["userrating"]*results[0]["rating"]+parseInt(req.body.rating))/(results[0]["userrating"]+1)}})
+                        .then(results => {
+                            res.redirect("/keranjang")
+                        })        
+                    })
+            })
+
             //tambah data barang
             app.post('/tambah',function(req,res){
                 //ambil data gambar
@@ -93,7 +132,8 @@ async function run() {
                         "ukuran":fields.ukuran,
                         "rating":5,
                         "stok":fields.stok,
-                        "gambar":files.gambar.name
+                        "gambar":files.gambar.name,
+                        "userrating":1
                     }
                     db.collection("barang").insertOne(data)
                     .then(result => {
