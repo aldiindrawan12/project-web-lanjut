@@ -1,6 +1,11 @@
+.body{
+    background-color: whitesmoke;
+    scroll-behavior: auto;
+}
+
 .container-home{
-    background-color: blueviolet;
-    padding: 1%;
+  
+    padding: 7%;
     display: flex;
     margin-top: 4%;
     height: 87vh;
@@ -8,12 +13,14 @@
 
 .tipe{
     width: 30%;
+    
     margin: auto;
-    text-align: center;    
+
 }
 
-.tipe img{
-    width: 100%;
+.tipe .img{
+    width: 20%;
+    height: 20%;
 }
 
 .tipe a:hover{
