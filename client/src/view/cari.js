@@ -10,19 +10,18 @@ class Product extends React.Component{
         this.cariChange = this.cariChange.bind(this);
     }
 
-    cariChange(e) {
-        this.setState({value: e.target.value});
-       }
-
+    
     componentDidMount(){
         const {params} = this.props.match;
-        fetch('/api/barang/'+params.nama)
+        fetch('/cari/'+params.nama+"/"+params.cari)
         .then(res => res.json())
         .then(barang => this.setState({barang},() => console.log(params.nama,barang)));
     }
 
-    
-
+    cariChange(e) {
+        this.setState({value: e.target.value});
+       }
+ 
     render(){
         const {params} = this.props.match;
         return (

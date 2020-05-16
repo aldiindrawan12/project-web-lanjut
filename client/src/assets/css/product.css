@@ -86,3 +86,19 @@
     width: 80%;
     margin: auto;
 }
+
+.urut{
+    float: right;
+    width: 20%;
+}
+
+.urut h1{
+    margin-bottom: 5%;
+}
+.urut a{
+    background-color: palegreen;
+    border-radius: 5px;
+    margin-right: 5%;
+    padding: 1%;
+    margin-top: 5%;
+}

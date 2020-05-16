@@ -28,6 +28,80 @@ async function run() {
                 })
                 .catch(error => console.error(error))
             })
+            //ambil data pencarian
+            app.get("/cari/:kategori/:cari",function(req,res){
+                var cari = req.params.cari;
+                console.log(cari);
+                db.collection("barang").find({"kategori":req.params.kategori,$or : [
+                    {"nama": {$regex: cari, $options: 'i'}},{"keterangan":{$regex: cari, $options: 'i'}},
+                ]}).toArray()
+                .then(results => {
+                    res.json(results)
+                })
+                .catch(error => console.error(error))
+            })
+
+            //ambil data dengan berdasarkan kategori
+            app.get("/urut/:berdasarkan/:kategori",(req,res)=>{
+                if(req.params.berdasarkan == "nama"){
+                    db.collection("barang").find({"kategori":req.params.kategori}).sort({"nama":1}).toArray()
+                    .then(results => {
+                        res.json(results)
+                    })
+                    .catch(error => console.error(error))
+                }else if(req.params.berdasarkan == "harga"){
+                    db.collection("barang").find({"kategori":req.params.kategori}).sort({"harga":1}).toArray()
+                    .then(results => {
+                        res.json(results)
+                    })
+                    .catch(error => console.error(error))
+                }else if(req.params.berdasarkan == "rating"){
+                    db.collection("barang").find({"kategori":req.params.kategori}).sort({"rating":-1}).toArray()
+                    .then(results => {
+                        res.json(results)
+                    })
+                    .catch(error => console.error(error))
+                }
+            })
+
+            //data untuk edit
+            app.get("/api/edit/:nama",(req,res)=>{
+                db.collection("barang").find({"nama":req.params.nama}).toArray()
+                .then(results => {
+                    res.json(results)
+                })
+                .catch(error => console.error(error))
+            })
+
+            //edit data barang
+            app.post('/edit/:nama',function(req,res){
+                //ambil data gambar
+                var form  = new formidable.IncomingForm();
+                form.parse(req,function(err,fields,files){
+                    var oldpath = files.gambar.path;
+                    var newpath = __dirname + "/client/src/assets/gambar/" + files.gambar.name;
+                    var data = {
+                        "nama":fields.nama,
+                        "harga":fields.harga,
+                        "deskripsi":fields.deskripsi,
+                        "ukuran":fields.ukuran,
+                        "stok":fields.stok,
+                        "gambar":files.gambar.name,
+                    }
+                    db.collection("barang").update({"nama":req.params.nama},data)
+                    .then(result => {
+                    })
+                    .catch(error => console.error(error))
+
+                    console.log(data)
+                    
+                    mv(oldpath, newpath, function (err) {
+                        if (err) { throw err; }
+                        console.log('file uploaded successfully');
+                        return res.redirect("/barang")
+                      });
+                })
+            })
 
             //ambil data keranjang user
             app.get("/api/keranjang/:user",(req,res)=>{
@@ -83,6 +157,14 @@ async function run() {
                     })
                 }
             });
+            //hapus barang
+            app.post('/hapus/:nama',(req,res)=>{
+                db.collection("barang").remove({"nama":req.params.nama})
+                .then(results=>{
+                    res.redirect("/barang")
+                })
+                .catch(error=>console.error(error))
+            }) 
 
             //hapus keranjang
             app.post('/hapus/:user/:nama',(req,res)=>{
@@ -91,7 +173,7 @@ async function run() {
                     res.redirect("/keranjang")
                 })
                 .catch(error=>console.error(error))
-            })
+            }) 
             
             //update keranjang
             app.post("/update/:user/:nama",(req,res)=>{
@@ -146,16 +228,11 @@ async function run() {
                     mv(oldpath, newpath, function (err) {
                         if (err) { throw err; }
                         console.log('file uploaded successfully');
-                        return res.redirect("/")
+                        return res.redirect("/barang")
                       });
                 })
             })
-
-            //mengolah rating product
-            app.post('/rating',function(req,res){
-                console.log()
-            })
-
+            
             //buat akun user
             app.post("/adduser",function(req,res){
                 db.collection("user").find().toArray().
