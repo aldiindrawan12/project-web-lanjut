@@ -1,5 +1,4 @@
-import React from 'react';
-import '../assets/css/login.css';
+import React from 'react'
 function Login(){
     const [username,setUsername] = React.useState('')
     const [password,setPassword] = React.useState('')
@@ -15,7 +14,7 @@ function Login(){
     return(
         <div style={{maxWidth:"700px",margin:'4%'}}>
             <div style={{textAlign:"center",marginBottom:"2rem",margin:"auto"}}>
-                <h2>Login</h2>
+                <h2> Login</h2>
             </div>
             <form action="/login" method="POST">
                 <label>Username</label><br/>
