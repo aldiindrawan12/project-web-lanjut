@@ -5,21 +5,22 @@ class Product extends React.Component{
         super();
         this.state ={
             barang : [],
-            value:""
+            value : ""
         }
         this.cariChange = this.cariChange.bind(this);
+    }
+
+    
+    componentDidMount(){
+        const {params} = this.props.match;
+        fetch('/cari/'+params.nama+"/"+this.state.value)
+        .then(res => res.json())
+        .then(barang => this.setState({barang},() => console.log(params.nama,barang)));
     }
 
     cariChange(e) {
         this.setState({value: e.target.value});
        }
-
-    componentDidMount(){
-        const {params} = this.props.match;
-        fetch('/api/barang/'+params.nama)
-        .then(res => res.json())
-        .then(barang => this.setState({barang},() => console.log(params.nama,barang)));
-    }
 
     render(){
         const {params} = this.props.match;

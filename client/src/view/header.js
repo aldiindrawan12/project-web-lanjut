@@ -9,6 +9,10 @@ import Upload from '../view/upload/upload';
 import Login from '../view/login/login';
 import Adduser from '../view/login/adduser';
 import Detail from '../view/detail'
+import Barang from '../view/barang'
+import Edit from '../view/edit/edit'
+import Cari from '../view/cari'
+import Sorting from '../view/sorting'
 
 class App extends Component{
 
@@ -28,7 +32,7 @@ class App extends Component{
     TambahComponent(){
         if (localStorage.getItem("username") != null)
             if(localStorage.getItem("username") === "aldi12")
-                return <li><a href="/upload">TAMBAH</a></li>
+                return <li><a href="/barang">BARANG</a></li>
         return null;
     };
 
@@ -62,10 +66,15 @@ class App extends Component{
                 <Route exact path='/product' component={Product}/>
                 <Route path='/product/:nama' component={Product}/>
                 <Route exact path="/keranjang" component={Keranjang} />
+                <Route exact path="/barang" component={Barang} />
+                <Route exact path="/barang/:kategori" component={Barang} />
                 <Route exact path="/upload" component={Upload} />
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/adduser" component={Adduser}/>
                 <Route exact path="/detail/:kategori/:nama" component={Detail}/>
+                <Route exact path="/edit/:nama" component={Edit}/>
+                <Route exact path="/cari/:nama" component={Cari}/>
+                <Route exact path="/urut/:berdasarkan/:nama" component={Sorting}/>
             </Router>
             </div>
             <Footer />
