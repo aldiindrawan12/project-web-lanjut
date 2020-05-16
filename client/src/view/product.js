@@ -5,7 +5,7 @@ class Product extends React.Component{
         super();
         this.state ={
             barang : [],
-            value:""
+            value : ""
         }
         this.cariChange = this.cariChange.bind(this);
     }
@@ -21,6 +21,8 @@ class Product extends React.Component{
         .then(barang => this.setState({barang},() => console.log(params.nama,barang)));
     }
 
+    
+
     render(){
         const {params} = this.props.match;
         return (
@@ -29,7 +31,7 @@ class Product extends React.Component{
                     <h1>Pakaian {params.nama}</h1>
                 </div>
                 <div className="search">
-                    <form action={"/cari/"+params.nama}>
+                    <form action={"/cari/"+params.nama+"/"+this.state.value}>
                         <input type="text" name="cari" id="cari" value={this.state.value} onChange={this.cariChange} placeholder="cari barang"></input>
                         <button>Cari</button>
                     </form>

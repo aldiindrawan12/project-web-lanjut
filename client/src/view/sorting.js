@@ -26,7 +26,7 @@ class Product extends React.Component{
         return (
             <div className="container">
                 <div className="search">
-                    <form action="/cari">
+                    <form action={"/cari/"+params.nama+"/"+this.state.value}>
                         <input type="text" name="cari" id="cari" value={this.state.value} onChange={this.cariChange} placeholder="cari barang"></input>
                         <button>Cari</button>
                     </form>

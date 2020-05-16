@@ -73,7 +73,7 @@ class App extends Component{
                 <Route exact path="/adduser" component={Adduser}/>
                 <Route exact path="/detail/:kategori/:nama" component={Detail}/>
                 <Route exact path="/edit/:nama" component={Edit}/>
-                <Route exact path="/cari/:nama" component={Cari}/>
+                <Route exact path="/cari/:nama/:cari" component={Cari}/>
                 <Route exact path="/urut/:berdasarkan/:nama" component={Sorting}/>
             </Router>
             </div>

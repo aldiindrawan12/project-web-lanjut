@@ -28,9 +28,11 @@ async function run() {
                 .catch(error => console.error(error))
             })
             //ambil data pencarian
-            app.get("/cari/:kategori/:cari",(req,res)=>{
+            app.get("/cari/:kategori/:cari",function(req,res){
+                var cari = req.params.cari;
+                console.log(cari);
                 db.collection("barang").find({"kategori":req.params.kategori,$or : [
-                    {"nama": /tas/},{"keterangan":/req.params.kategori/},
+                    {"nama": {$regex: cari, $options: 'i'}},{"keterangan":{$regex: cari, $options: 'i'}},
                 ]}).toArray()
                 .then(results => {
                     res.json(results)
