@@ -4,7 +4,9 @@ import '../assets/css/footer.css'
 function Footer(){
     return(
         <div className="Footer">
-            ini footer @aldi indrawan
+            Aldi Indrawan
+            Rizky Bhaskara
+            M. Alfan Riyadi
         </div>
     );
 }
