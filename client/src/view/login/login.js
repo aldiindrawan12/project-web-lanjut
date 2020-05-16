@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import '../assets/css/login.css';
 function Login(){
     const [username,setUsername] = React.useState('')
     const [password,setPassword] = React.useState('')
@@ -22,7 +22,7 @@ function Login(){
                 <input type="text" name="username" value={username} onChange={onChangeUsername}/>
                 <br/><br/>
                 <label>Password</label><br/>
-                <input type="text" name="password" value={password} onChange={onChangePassword}></input>
+                <input type="password" name="password" value={password} onChange={onChangePassword}></input>
                 <br/><br/>
                 <button>login</button>
             </form>
