@@ -19,6 +19,15 @@ async function run() {
         .then(client => {
             console.log('Connected to Database')
             const db = client.db('clothing-store') 
+            
+            //ambil seluruh data barang
+            app.get("/api/barang/",(req,res)=>{
+                db.collection("barang").find().toArray()
+                .then(results => {
+                    res.json(results)
+                })
+                .catch(error => console.error(error))
+            })
 
             //ambil data dengan berdasarkan kategori
             app.get("/api/barang/:kategori",(req,res)=>{
@@ -262,8 +271,8 @@ async function run() {
                         res.send('<script>alert("Username salah");window.location.href ="/login"</script>')
                     }else{
                         if(results[0]["password"] === req.body.password){
-                              
-                              app.post('/view/login', verifyToken, (req, res) => {  
+                            res.redirect('/') 
+                              app.post('/view/login', verifyToken, (req, res) => {
                                 jwt.verify(req.token, 'secretkey', (err, authData) => {
                                   if(err) {
                                     res.sendStatus(403);
@@ -296,8 +305,8 @@ async function run() {
                                 } else {
                                   res.sendStatus(403);
                                 }
-                              
                               }
+                              console.log("jwt",req.token)
                             //jwt
                           
                             // function verifyToken(req, res, next) {

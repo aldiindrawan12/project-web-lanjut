@@ -49,6 +49,7 @@ class Product extends React.Component{
                                 <img className="image" src={require('../assets/gambar/'+barang.gambar)} alt="gambar barang"/>
                                 <h4 className="nama">{barang.nama}</h4>
                                 <h5 className="harga">Rp.{barang.harga}</h5>  
+                                <h5 className="harga">Stok : {barang.stok} Tersedia</h5>  
                                 <h5 className="rating">rating   : {barang.rating}</h5>      
                                 <a className="detail" href={'/detail/'+barang.kategori+"/"+barang.nama}>Detail</a>
                                 <form action="/addkeranjang" method="POST">
@@ -59,7 +60,6 @@ class Product extends React.Component{
                                     <input name="total" value={barang.harga} hidden></input>
                                     <button className="beli">Beli</button>
                                 </form>
-                                
                             </div>
                         )}       
                 </div>
