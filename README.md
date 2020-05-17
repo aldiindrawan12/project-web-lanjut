@@ -7,6 +7,7 @@ package
 3. npm install mangodb 
 4. npm install concurrently
 5. npm install 
+6. npm install express jsonwebtoken
 
 urutan untuk jalankan program 
 1. ke folder root
