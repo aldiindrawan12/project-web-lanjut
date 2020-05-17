@@ -91,11 +91,14 @@ async function run() {
                     var newpath = __dirname + "/client/src/assets/gambar/" + files.gambar.name;
                     var data = {
                         "nama":fields.nama,
+                        "kategori":fields.kategori,
                         "harga":fields.harga,
                         "deskripsi":fields.deskripsi,
                         "ukuran":fields.ukuran,
+                        "rating":fields.rating,
                         "stok":fields.stok,
                         "gambar":files.gambar.name,
+                        "userrating":fields.userrating
                     }
                     db.collection("barang").update({"nama":req.params.nama},data)
                     .then(result => {

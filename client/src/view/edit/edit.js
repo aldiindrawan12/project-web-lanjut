@@ -39,6 +39,9 @@ class Edit extends Component{
                     <br/><br/>
                     <label>Ukuran Product</label><br/>
                     <input type="text" name="ukuran" defaultValue={barang.ukuran}></input>
+                    <input type="text" name="kategori" defaultValue={barang.kategori} hidden></input>
+                    <input type="text" name="rating" defaultValue={barang.rating} hidden></input>
+                    <input type="text" name="userrating" defaultValue={barang.userrating} hidden></input>
                     <br/><br/>
                     <button>Simpan</button>
                 </form>
