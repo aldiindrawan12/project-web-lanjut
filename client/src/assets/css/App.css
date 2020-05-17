@@ -60,42 +60,47 @@ a{
     color: black;
 }
 
-.white-black{
+/* .white-black{
     background-color: white;
     color: black;
-}
+} */
 
 .header{
     display: block;
     height: 10vh;
-    background-color: #FFD700;
+    background-color: #eeeeee;
     padding: 1%;
     width: 100%;
     top: 0px;
     position: fixed;
 }
-
+/* 
 .header-container{
     box-sizing: border-box;
     margin: auto;
     
-}
+} */
 
 .header-logo{
     float: left;
     font-size: 2vw;
+    font-weight: 900;
 }
 
-.header-logo, .header-nav{
+
+
+
+/* .header-logo, .header-nav{
     display: table-cell;
-}
+} */
 
-.header-logo a{
+/* .header-logo a{
     display: inline-block;
     line-height: 4vh;
-}
+} */
 
 .header-nav{
+    font-weight: 700;
     width: fit-content;
     float: right;
     font-size: 1.5vw;
@@ -127,15 +132,15 @@ a{
     color: white;
 }
 
-.App {
+/* .App {
   background-color: aqua;
   text-align: center;
-}
+} */
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -143,7 +148,7 @@ a{
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -152,7 +157,7 @@ a{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;

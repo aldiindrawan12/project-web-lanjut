@@ -3,11 +3,19 @@ import '../assets/css/home.css'
 import anak from '../assets/gambar/anak.jpg'
 import pria from '../assets/gambar/pria.jpg'
 import wanita from '../assets/gambar/wanita.jpg'
-// import Header from './header.jsx';
+
+import truck from '../assets/gambar/delivery-truck.png'
+import box from '../assets/gambar/box.png'
+import wallet from '../assets/gambar/wallet.png'
 
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Jumbotron
+    CardTitle, CardGroup,
+    CardSubtitle
+  } from 'reactstrap'
+
+
+import {
+    Card, CardImg, CardText, CardBody,Button,Container,Jumbotron,
   } from 'reactstrap';
 
 
@@ -16,8 +24,49 @@ import {
     render(){
         return(
         <>
-        {/* <Header/>
-        <Jumbotron/> */}
+
+            <div className="jumbo">
+                <Jumbotron fluid>
+                <Container>
+                    <h1>Clothing Store</h1>
+                    <p>
+                    Temukan barang favoritemu disini yang tentunya kami memiliki koleksi lengkapnya
+                    </p>
+                </Container>
+                </Jumbotron>
+                </div>
+
+
+            <div className="fitur">
+
+            <CardGroup>
+                <Card>
+                    <CardImg top width="100%" src={truck} alt="Card image cap" />
+                    <CardBody>
+                    <CardTitle className="merk">Free Delivery</CardTitle>
+                    
+                    </CardBody>
+                </Card>
+                <Card>
+                    <CardImg top width="100%" src={box} alt="Card image cap" />
+                    <CardBody>
+                    <CardTitle className="merk">Easy Returns</CardTitle>
+                    </CardBody>
+                </Card>
+                <Card>
+                    <CardImg top width="100%" src={wallet} alt="Card image cap" />
+                    <CardBody>
+                    <CardTitle className="merk">No Additional Fees</CardTitle>
+                    </CardBody>
+                </Card>
+                </CardGroup>
+
+
+            </div>
+
+
+
+            
         <div className="container-home">
             <div className="tipe">
             <Card>
@@ -51,7 +100,9 @@ import {
             </Card> 
             </div>
         </div>
+  
         </>
+                
         );
     }
 }
