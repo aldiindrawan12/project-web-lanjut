@@ -4,7 +4,7 @@ import '../assets/css/footer.css'
 function Footer(){
     return(
         <div className="Footer">
-            Develope by
+            Developed by
             Aldi Indrawan,
             Rizki Bhaskara,
             M. Alfan Riyadi
