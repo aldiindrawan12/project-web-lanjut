@@ -19,6 +19,15 @@ async function run() {
         .then(client => {
             console.log('Connected to Database')
             const db = client.db('clothing-store') 
+            
+            //ambil seluruh data barang
+            app.get("/api/barang/",(req,res)=>{
+                db.collection("barang").find().toArray()
+                .then(results => {
+                    res.json(results)
+                })
+                .catch(error => console.error(error))
+            })
 
             //ambil data dengan berdasarkan kategori
             app.get("/api/barang/:kategori",(req,res)=>{
@@ -97,7 +106,7 @@ async function run() {
                     
                     mv(oldpath, newpath, function (err) {
                         if (err) { throw err; }
-                        console.log('file uploaded successfully');
+                        console.log('file update successfully');
                         return res.redirect("/barang")
                       });
                 })
@@ -262,8 +271,8 @@ async function run() {
                         res.send('<script>alert("Username salah");window.location.href ="/login"</script>')
                     }else{
                         if(results[0]["password"] === req.body.password){
-                              
-                              app.post('/view/login', verifyToken, (req, res) => {  
+                            res.redirect("/")
+                              app.post('/login', verifyToken, (req, res) => {  
                                 jwt.verify(req.token, 'secretkey', (err, authData) => {
                                   if(err) {
                                     res.sendStatus(403);
@@ -273,7 +282,7 @@ async function run() {
                                 });
                               });
                               
-                              app.post('/view/login', (req, res) => {
+                              app.post('/login', (req, res) => {
                                 const user = {
                                   username: req.body.username,
                                   password:req.body.password
@@ -296,74 +305,8 @@ async function run() {
                                 } else {
                                   res.sendStatus(403);
                                 }
-                              
                               }
-                            //jwt
-                          
-                            // function verifyToken(req, res, next) {
-                            //     const token = req.header('auth-token');
-
-                            //     if(!token){
-                            //         return res.status(401).json({msg: 'Tidak ada token!'});
-                            //     }
-
-                            //     try{
-                            //         const decoded = jwt.verify(token, config.get('jwtSecret'));
-                            //         req.user = decoded.user;
-                                 
-                            //     }catch(err){
-                            //         res.status(401).json({msg: 'Token tidak valid'});
-                            //     }
-                            // };
-
-                    // app.post('/view/login', (req, res) => {
-                    //     // Mock user
-                    //     // const user = {
-                    //     //   id: 1, 
-                    //     //   username;
-                    //     //   email: 'brad@gmail.com'
-                    //     // }
-                      
-                    //     jwt.sign( 'secretkey', { expiresIn: '30s' }, (err, token) => {
-                    //       res.json({
-                    //         token
-                    //       });
-                    //     });
-                    //   });
-
-                    //   app.post('/api/posts', verifyToken, (req, res) => {  
-                    //     jwt.verify(req.token, 'secretkey', (err, authData) => {
-                    //       if(err) {
-                    //         res.sendStatus(403);
-                    //       } else {
-                    //         res.json({
                             
-                    //           authData
-                    //         });
-                    //       }
-                    //     });
-                    //   });
-
-                    //   function verifyToken(req, res, next) {
-                  
-                    //     const bearerHeader = req.headers['authorization'];
-                    
-                    //     if(typeof bearerHeader !== 'undefined') {
-                  
-                    //       const bearer = bearerHeader.split(' ');
-                    
-                    //       const bearerToken = bearer[1];
-                   
-                    //       req.token = bearerToken;
-                    
-                    //       next();
-                    //     } else {
-                  
-                    //       res.sendStatus(403);
-                    //     }
-                      
-                    //   }
-                            // res.redirect("/")
                         }else{
                             res.send('<script>alert("Password salah");window.location.href ="/login"</script>')
                         }

@@ -49,3 +49,14 @@ table tr{
     margin-right: 1%;
     background-color: palegoldenrod;
 }
+
+.total{
+    padding: 2%;
+    margin-right: 4%;
+    float: right;
+}
+
+.total h1{
+    margin-bottom: 10%;
+    font-size: 1vw;
+}

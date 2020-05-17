@@ -15,7 +15,7 @@ class Keranjang extends Component{
     }
     
     render(){
-        
+        var total_seluruh = 0;
         return(
             <div className="container-keranjang">
                    {this.state.barang.map(barang => 
@@ -48,6 +48,15 @@ class Keranjang extends Component{
                             </table>
                         </div>
                     )}       
+                    {this.state.barang.map((barang) => {
+                        total_seluruh = total_seluruh + barang.total;
+                    }
+                    )}
+                    <div className="total">
+                        <h1>Total : Rp.{total_seluruh}</h1>
+                        <button>CheckOut</button>
+                    </div>
+                    <div style={{clear:"both"}}></div>
             </div>
         );
     }
