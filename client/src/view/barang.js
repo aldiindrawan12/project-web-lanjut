@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import '../assets/css/keranjang.css'
+import '../assets/css/barang.css'
 
 class Barang extends Component{
     constructor(){
