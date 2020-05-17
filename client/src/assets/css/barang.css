@@ -20,8 +20,9 @@ table tr{
     text-align: center;
 }
 
+
 .barang{
-    margin-top:4%;
+    margin-top:8%;
     margin-left: 40%;
     font-size: 2vw;
 }
@@ -64,7 +65,7 @@ table tr{
 @media (max-width: 576px){
     .container-keranjang{
         padding: 2%;
-        margin-top: 20%;
+        margin-top: 10%;
         margin-left: 10%;
         width: 85%;
         height: 100%;
@@ -86,26 +87,31 @@ table tr{
     }
     
     .barang{
-        margin-top:4%;
-        margin-left: 40%;
-        font-size: 2vw;
+        margin-top:30%;
+        /* margin-left: 40%; */
+        font-size: 4vw;
+        /* text-align: center; */
     }
     .upload{
         margin-top: 4%;
         margin-left: 10%;
         padding: 1%;
         border-radius: 10px;
-        width: 10%;
+        width: 30%;
         text-align: center;
         background-color: moccasin;
+        font-size: 3vw;
     }
     
     .kategori{
         margin-left: 10%;
         padding: 1%;
+        font-size: 3vw;
     }
     .kategori h1{
+        margin-top: 5%;
         margin-bottom: 1%;
+        font-size: 3vw;
     }
     
     .kategori a{
