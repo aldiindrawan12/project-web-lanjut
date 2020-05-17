@@ -19,6 +19,15 @@ async function run() {
         .then(client => {
             console.log('Connected to Database')
             const db = client.db('clothing-store') 
+            
+            //ambil seluruh data barang
+            app.get("/api/barang/",(req,res)=>{
+                db.collection("barang").find().toArray()
+                .then(results => {
+                    res.json(results)
+                })
+                .catch(error => console.error(error))
+            })
 
             //ambil data dengan berdasarkan kategori
             app.get("/api/barang/:kategori",(req,res)=>{
@@ -296,7 +305,6 @@ async function run() {
                                 } else {
                                   res.sendStatus(403);
                                 }
-                              
                               }
                             
                         }else{

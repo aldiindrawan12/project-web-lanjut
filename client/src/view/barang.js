@@ -10,9 +10,17 @@ class Barang extends Component{
     }
     componentDidMount(){
         const {params} = this.props.match;
-        fetch('/api/barang/'+params.kategori)
-        .then(res => res.json())
-        .then(barang => this.setState({barang},() => console.log(barang)));
+        if(params.kategori == null || params.kategori == ""){
+            fetch('/api/barang/')
+            .then(res => res.json())
+            .then(barang => this.setState({barang},() => console.log(barang)));
+        }else{
+            fetch('/api/barang/'+params.kategori)
+            .then(res => res.json())
+            .then(barang => this.setState({barang},() => console.log(barang)));
+        }
+        console.log("ketegori ",params.kategori)
+
     }
     
     render(){
