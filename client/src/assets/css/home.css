@@ -1,21 +1,31 @@
+.body{
+    background-color: rgb(245, 245, 0.1);
+    
+}
+
 .container-home{
-    background-color: blueviolet;
-    padding: 1%;
+    padding: 44dp;
+    background-color: gray;
+    padding: 13%;
     display: flex;
-    margin-top: 4%;
-    height: 87vh;
+   
 }
 
 .tipe{
+    
     width: 30%;
     margin: auto;
     text-align: center;    
 }
 
-.tipe img{
-    width: 100%;
+
+
+.tipe-judul{
+    font-weight: 900;
+    font-size: 28px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.tipe a:hover{
-    opacity: 0.7;
+.buttons{
+    font-size: large;
 }
