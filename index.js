@@ -59,7 +59,7 @@ async function run() {
                     })
                     .catch(error => console.error(error))
                 }else if(req.params.berdasarkan == "harga"){
-                    db.collection("barang").find({"kategori":req.params.kategori}).sort({"harga":1}).toArray()
+                    db.collection("barang").find({"kategori":req.params.kategori}).sort({"harga":-1}).toArray()
                     .then(results => {
                         res.json(results)
                     })

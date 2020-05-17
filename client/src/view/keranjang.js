@@ -49,7 +49,7 @@ class Keranjang extends Component{
                         </div>
                     )}       
                     {this.state.barang.map((barang) => {
-                        total_seluruh = total_seluruh + barang.total;
+                        total_seluruh = total_seluruh + parseInt(barang.total);
                     }
                     )}
                     <div className="total">
