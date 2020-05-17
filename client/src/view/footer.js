@@ -4,8 +4,9 @@ import '../assets/css/footer.css'
 function Footer(){
     return(
         <div className="Footer">
-            Aldi Indrawan
-            Rizky Bhaskara
+            Develope by
+            Aldi Indrawan,
+            Rizki Bhaskara,
             M. Alfan Riyadi
         </div>
     );

@@ -47,7 +47,7 @@ class App extends Component{
             <div className="header white-black" id="home">
                 <div className="header-container">
                     <div className="header-logo">
-                        <a href="/">CLOTHING STORE</a>
+                        <a href="/" >CLOTHING STORE</a>
                     </div>
                     <div className="header-nav">
                         <ul>

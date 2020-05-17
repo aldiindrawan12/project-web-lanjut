@@ -1,21 +1,20 @@
-.body{
-    background-color: rgb(245, 245, 0.1);
-    
-}
+
 
 .container-home{
-    padding: 44dp;
-    background-color: gray;
-    padding: 13%;
+    
+    background-color: #393e46;
+  
     display: flex;
    
 }
 
 .tipe{
-    
-    width: 30%;
+
+    padding-top: 14%;
+    width: 25%;
     margin: auto;
-    text-align: center;    
+    text-align: center;
+    padding-bottom: 5%;    
 }
 
 
@@ -29,3 +28,38 @@
 .buttons{
     font-size: large;
 }
+
+.jumbo{
+    color: #00adb5;
+    padding-top: 4%;
+}
+
+.jumbo h1{
+    font-weight: 900;
+    font-size: 77px;
+
+}
+
+.jumbo p{
+    font-weight: 300;
+    font-size: 22px;
+}
+
+
+
+.fitur{
+    margin-left: 25%;
+    
+    width: 50%;
+    height: 50%;
+    padding-bottom: 22px;
+}
+
+.merk{
+    text-align: center;
+    font-weight: 700;
+    font-size: 22px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
