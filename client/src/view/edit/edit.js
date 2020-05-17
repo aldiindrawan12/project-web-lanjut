@@ -1,17 +1,11 @@
-import React, { Component, useState } from 'react'
+import React, { Component} from 'react'
 
 class Edit extends Component{
     constructor(){
         super();
         this.state ={
-            barang : [],
-            nama:""
+            barang : []
         }
-        this.namaChange = this.namaChange.bind(this);
-    }
-
-    namaChange(event){
-        this.setState({nama:event.currentTarget.value})
     }
 
     componentDidMount(){
@@ -33,19 +27,19 @@ class Edit extends Component{
                     <input type="file" name="gambar"></input>
                     <br/><br/> 
                     <label>Nama Product</label><br/>
-                    <input type="text" name="nama" value={this.state.nama} onChange={this.namaChange}></input>
+                    <input type="text" name="nama" defaultValue={barang.nama}></input>
                     <br/><br/>
                     <label>Harga Product (IDR)</label><br/>
-                    <input type="number" name="harga" value={barang.harga}></input>
+                    <input type="number" name="harga" defaultValue={barang.harga}></input>
                     <br/><br/>
                     <label>Deskripsi Product</label><br/>
-                    <textarea type="text" name="deskripsi" value={barang.deskripsi}></textarea>
+                    <textarea type="text" name="deskripsi" defaultValue={barang.deskripsi}></textarea>
                     <br/><br/>
                     <label>Stok  Product</label><br/>
-                    <input type="number" name="stok" value={barang.stok}></input>
+                    <input type="number" name="stok" defaultValue={barang.stok}></input>
                     <br/><br/>
                     <label>Ukuran Product</label><br/>
-                    <input type="text" name="ukuran" value={barang.ukuran}></input>
+                    <input type="text" name="ukuran" defaultValue={barang.ukuran}></input>
                     <br/><br/>
                     <button>Simpan</button>
                 </form>
